@@ -4,7 +4,12 @@ import fr.codereviewers.back.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface UserRepository extends JpaRepository<UserEntity, String> {
+import java.util.List;
+import java.util.Optional;
 
+@Repository
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
+    Optional<UserEntity> findById(Long id);
+    Optional<List<UserEntity>> findByIdOrPseudoOrNameOrFirstName(Long id, String pseudo, String name, String firstName);
+    Optional<List<UserEntity>> findByNameContainingOrFirstNameContainingOrPseudoContaining(String name, String firstName, String pseudo);
 }

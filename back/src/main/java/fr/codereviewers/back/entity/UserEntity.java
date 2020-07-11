@@ -1,7 +1,11 @@
 package fr.codereviewers.back.entity;
 
+import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.context.annotation.Role;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,6 +38,7 @@ public class UserEntity {
 
     private Date birthDate;
 
+    @CreatedDate
     private Date createdAt;
 
     private Date lastAccountUpdate;
