@@ -1,10 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'frontend';
+
+  currentLanguage: string;
+  languageList = [
+    { code: 'en', name: 'English'},
+    { code: 'de', name: 'German'},
+    { code: 'fr', name: 'Français'},
+  ]
+  constructor() {}
+
+  ngOnInit() {
+    this.currentLanguage = this.languageList.find(p => p.code).name;
+  }
+
+  changeLanguage(language: string): void {
+    window.location.search = '?lang=' + language;
+  }
 }
