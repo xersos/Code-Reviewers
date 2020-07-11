@@ -1,9 +1,11 @@
 package fr.codereviewers.back.dto;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 import java.util.Date;
 
+@ApiModel
 @Data
 public class UserDto {
     private long id;
