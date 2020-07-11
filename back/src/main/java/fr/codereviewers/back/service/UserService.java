@@ -5,7 +5,6 @@ import fr.codereviewers.back.dto.UserDto;
 import fr.codereviewers.back.entity.UserEntity;
 import fr.codereviewers.back.exception.UserNotFoundException;
 import fr.codereviewers.back.mapper.UserMapper;
-import javassist.NotFoundException;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
