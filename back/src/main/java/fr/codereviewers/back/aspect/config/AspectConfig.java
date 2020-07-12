@@ -1,6 +1,6 @@
 package fr.codereviewers.back.config;
 
-import fr.codereviewers.back.aspect.KeycloakAspect;
+import fr.codereviewers.back.shared.aspect.KeycloakAspect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;

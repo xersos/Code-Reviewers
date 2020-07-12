@@ -1,7 +1,7 @@
 package fr.codereviewers.back.mapper;
 
-import fr.codereviewers.back.dto.UserDto;
-import fr.codereviewers.back.entity.UserEntity;
+import fr.codereviewers.back.web.dto.UserDto;
+import fr.codereviewers.back.core.entity.UserEntity;
 import org.mapstruct.Mapper;
 
 @Mapper
