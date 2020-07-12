@@ -1,4 +1,4 @@
-package fr.codereviewers.back.controller;
+package fr.codereviewers.back.web.controller;
 
 import javassist.NotFoundException;
 import org.springframework.http.HttpStatus;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-@RestControllerAdvice(basePackages = {"fr.codereviewers.back.controller"})
-public class ExceptionAdviceController extends ResponseEntityExceptionHandler {
+@RestControllerAdvice(basePackages = {"fr.codereviewers.back.web.controller.rest"})
+public class RestExceptionController extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({NotFoundException.class})
     protected ResponseStatusException handleNotFound(NotFoundException ex) {

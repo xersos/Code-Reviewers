@@ -1,17 +1,11 @@
-package fr.codereviewers.back.entity;
+package fr.codereviewers.back.core.entity;
 
-import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.context.annotation.Role;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.lang.Nullable;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -44,4 +38,13 @@ public class UserEntity {
     private Date lastAccountUpdate;
 
     private boolean verified;
+
+    @ManyToMany
+    private List<ArticleEntity> articles;
+
+    @OneToMany
+    private List<CommentEntity> comments;
+
+    @OneToMany
+    private List<CommentResponseEntity> commentResponses;
 }

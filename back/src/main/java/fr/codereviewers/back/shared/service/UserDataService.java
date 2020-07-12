@@ -1,10 +1,10 @@
-package fr.codereviewers.back.service;
+package fr.codereviewers.back.shared.service;
 
-import fr.codereviewers.back.dao.UserRepository;
-import fr.codereviewers.back.dto.UserDto;
-import fr.codereviewers.back.entity.UserEntity;
-import fr.codereviewers.back.exception.UserNotFoundException;
-import fr.codereviewers.back.mapper.UserMapper;
+import fr.codereviewers.back.core.dao.UserRepository;
+import fr.codereviewers.back.web.dto.UserDto;
+import fr.codereviewers.back.core.entity.UserEntity;
+import fr.codereviewers.back.core.exception.UserNotFoundException;
+import fr.codereviewers.back.shared.mapper.UserMapper;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,13 +14,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserDataService {
 
     private final UserMapper userMapper = Mappers.getMapper(UserMapper.class);
     private final UserRepository userRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserDataService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

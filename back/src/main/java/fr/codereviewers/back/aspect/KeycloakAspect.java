@@ -1,6 +1,6 @@
 package fr.codereviewers.back.aspect;
 
-import fr.codereviewers.back.service.KeycloakService;
+import fr.codereviewers.back.shared.service.KeycloakService;
 import org.apache.http.auth.AuthenticationException;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -17,7 +17,7 @@ public class KeycloakAspect {
     @Autowired
     private KeycloakService keycloakService;
 
-    @Around(value="execution(* fr.codereviewers.back.controller.rest.*.*(..)) && args(authorization,..))")
+    @Around(value="execution(* fr.codereviewers.back.web.controller.*RestController.*(..)) && args(authorization,..))")
     public Object checkAuthentication(ProceedingJoinPoint joinPoint, String authorization) throws AuthenticationException {
         Object object = null;
 
@@ -39,7 +39,7 @@ public class KeycloakAspect {
         return object;
     }
 
-    @Before("execution(* fr.codereviewers.back.controller.*Controller.*(..)) && args(..))")
+    @Before("execution(* fr.codereviewers.back.web.controller.*Controller.*(..)) && args(..))")
     public void beforeRestFunction() {
         LOGGER.info("Before Function");
     }

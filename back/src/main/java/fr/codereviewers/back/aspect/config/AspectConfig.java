@@ -1,4 +1,4 @@
-package fr.codereviewers.back.config;
+package fr.codereviewers.back.aspect.config;
 
 import fr.codereviewers.back.aspect.KeycloakAspect;
 import org.springframework.context.annotation.Bean;

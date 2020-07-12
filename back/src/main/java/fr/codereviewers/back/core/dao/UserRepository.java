@@ -1,6 +1,6 @@
-package fr.codereviewers.back.dao;
+package fr.codereviewers.back.core.dao;
 
-import fr.codereviewers.back.entity.UserEntity;
+import fr.codereviewers.back.core.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
