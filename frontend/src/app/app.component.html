@@ -9,3 +9,5 @@
     <button mat-menu-item *ngFor="let language of languageList" (click)="changeLanguage(language.code)">{{ language.name }}</button>
   </ng-template>
 </mat-menu>
+
+<router-outlet></router-outlet>
