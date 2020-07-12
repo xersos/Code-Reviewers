@@ -1,4 +1,4 @@
-package fr.codereviewers.back.mapper;
+package fr.codereviewers.back.shared.mapper;
 
 import fr.codereviewers.back.web.dto.UserDto;
 import fr.codereviewers.back.core.entity.UserEntity;

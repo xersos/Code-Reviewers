@@ -8,16 +8,11 @@ import java.util.List;
 
 @ApiModel
 @Data
-public class CommentDto {
+public class ArticleDto {
     private long id;
-
-    private UserInfoReducedDto author;
-
-    private ArticleInfoReducedDto article;
-
-    private List<CommentResponseDto> commentResponses;
-
-    private String content;
-
+    private String title;
+    private List<UserInfoReducedDto> author;
+    private List<CommentDto> comment;
     private Date createdAt;
+    private String content;
 }

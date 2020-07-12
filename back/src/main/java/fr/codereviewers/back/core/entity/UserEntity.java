@@ -1,6 +1,5 @@
-package fr.codereviewers.back.entity;
+package fr.codereviewers.back.core.entity;
 
-import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;

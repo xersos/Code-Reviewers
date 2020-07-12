@@ -1,4 +1,4 @@
-package fr.codereviewers.back.config;
+package fr.codereviewers.back.web.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package fr.codereviewers.back.service;
+package fr.codereviewers.back.shared.service;
 
 
 import org.apache.log4j.Logger;

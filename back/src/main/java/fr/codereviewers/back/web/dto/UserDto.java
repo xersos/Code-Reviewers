@@ -1,9 +1,10 @@
-package fr.codereviewers.back.dto;
+package fr.codereviewers.back.web.dto;
 
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @ApiModel
 @Data
@@ -27,6 +28,12 @@ public class UserDto {
     private Date createdAt;
 
     private Date lastAccountUpdate;
+
+    private List<ArticleDto> articles;
+
+    private List<CommentDto> comments;
+
+    private List<CommentResponseDto> commentResponses;
 
     private boolean verified;
 }

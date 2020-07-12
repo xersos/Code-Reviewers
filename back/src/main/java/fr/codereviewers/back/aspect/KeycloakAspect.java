@@ -1,4 +1,4 @@
-package fr.codereviewers.back.shared.aspect;
+package fr.codereviewers.back.aspect;
 
 import fr.codereviewers.back.shared.service.KeycloakService;
 import org.apache.http.auth.AuthenticationException;

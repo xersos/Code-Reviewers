@@ -1,4 +1,4 @@
-package fr.codereviewers.back.shared.exception;
+package fr.codereviewers.back.core.exception;
 
 import javassist.NotFoundException;
 
