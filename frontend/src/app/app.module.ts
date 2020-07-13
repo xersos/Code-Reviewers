@@ -21,7 +21,7 @@ export function loadInitialData(injector: Injector, userService: UserService) {
     return () => userService.loadAndGetCurrentUser()
         .pipe(
             catchError(() => {
-              return injector.get(Router).navigate(['/fobidden']);
+              return injector.get(Router).navigate(['/forbidden']);
             })
         )
         .toPromise();
