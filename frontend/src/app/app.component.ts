@@ -13,10 +13,10 @@ export class AppComponent implements OnInit {
     { code: 'en', name: 'English'},
     { code: 'de', name: 'German'},
     { code: 'fr', name: 'Français'},
-  ]
+  ];
   constructor() {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.currentLanguage = this.languageList.find(p => p.code).name;
   }
 
