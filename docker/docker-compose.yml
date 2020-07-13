@@ -1,43 +1,85 @@
-version: '3'
-
-## cassé
-
-networks:
-  code_review_network:
-    driver: bridge
-
-volumes:
-  postgres_data:
-    driver: local
-
+version: '2'
 services:
-  postgres:
-    image: postgres
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: keycloak
-      POSTGRES_USER: "keycloak"
-      POSTGRES_PASSWORD: "password"
-    networks:
-      - code_review_network
   keycloak:
-    image: quay.io/keycloak/keycloak:latest
+    image: jboss/keycloak:10.0.2
+    command:
+      [
+        '-b',
+        '0.0.0.0',
+        '-Dkeycloak.migration.action=import',
+        '-Dkeycloak.migration.provider=dir',
+        '-Dkeycloak.migration.dir=/opt/jboss/keycloak/realm-config',
+        '-Dkeycloak.migration.strategy=OVERWRITE_EXISTING',
+        '-Djboss.socket.binding.port-offset=1000',
+        '-Dkeycloak.profile.feature.upload_scripts=enabled',
+      ]
+    volumes:
+      - ./realm-config:/opt/jboss/keycloak/realm-config
     environment:
-      DB_VENDOR: POSTGRES
-      DB_ADDR: keycloak
-      DB_DATABASE: keycloak
-      DB_USER: "keycloak"
-      DB_SCHEMA: public
-      DB_PASSWORD: "password"
-      KEYCLOAK_USER: "admin_reviewers"
-      KEYCLOAK_PASSWORD: "codereview"
-      PROXY_ADDRESS_FORWARDING: "true"
-      # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
-      #JDBC_PARAMS: "ssl=true"
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=azerty
+      - DB_VENDOR=mariadb
+      - DB_ADDR=mariadb
+      - DB_USER=admin_reviewers
+      - DB_PASSWORD=admin_reviewers
+      - DB_DATABASE=code_reviewers
     ports:
       - 8080:8080
+      - 9443:9443
+      - 10990:10990
     depends_on:
-      - postgres
-    networks:
-      - code_review_network
+      - mariadb
+
+  mariadb:
+    image: mariadb
+    volumes:
+      - ./mariadb_data:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=code_reviewers
+      - MYSQL_USER=admin_reviewers
+      - MYSQL_PASSWORD=admin_reviewers
+      - MYSQL_ROOT_PASSWORD=root
+
+#version: '3'
+#
+### cassé
+#
+#networks:
+#  code_review_network:
+#    driver: bridge
+#
+#volumes:
+#  postgres_data:
+#    driver: local
+#
+#services:
+#  postgres:
+#    image: postgres
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data
+#    environment:
+#      POSTGRES_DB: keycloak
+#      POSTGRES_USER: "keycloak"
+#      POSTGRES_PASSWORD: "password"
+#    networks:
+#      - code_review_network
+#  keycloak:
+#    image: quay.io/keycloak/keycloak:latest
+#    environment:
+#      DB_VENDOR: POSTGRES
+#      DB_ADDR: keycloak
+#      DB_DATABASE: keycloak
+#      DB_USER: "keycloak"
+#      DB_SCHEMA: public
+#      DB_PASSWORD: "password"
+#      KEYCLOAK_USER: "admin_reviewers"
+#      KEYCLOAK_PASSWORD: "codereview"
+#      PROXY_ADDRESS_FORWARDING: "true"
+#      # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
+#      #JDBC_PARAMS: "ssl=true"
+#    ports:
+#      - 8080:8080
+#    depends_on:
+#      - postgres
+#    networks:
+#      - code_review_network
