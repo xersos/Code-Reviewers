@@ -12,7 +12,7 @@ services:
     environment:
       POSTGRES_DB: keycloak
       POSTGRES_USER: keycloak
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: okokokokok
     ports:
       - 5432:5432
   keycloak:
@@ -36,9 +36,9 @@ services:
       DB_DATABASE: keycloak
       DB_USER: keycloak
       DB_SCHEMA: public
-      DB_PASSWORD: password
+      DB_PASSWORD: okokokokok
       KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: Pa55w0rd
+      KEYCLOAK_PASSWORD: okokokokok
       # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
       #JDBC_PARAMS: "ssl=true"
     ports:

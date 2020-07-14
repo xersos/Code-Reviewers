@@ -25,7 +25,7 @@ public class ArticleDataService {
     public List<ArticleDto> getAll() {
         List<ArticleDto> dtos = new ArrayList<>();
         List<ArticleEntity> articles = this.articleRepository.findAll();
-        articles.stream().forEach(articleEntity -> {
+        articles.forEach(articleEntity -> {
             dtos.add(articleMapper.entityToDTO(articleEntity));
         });
 
