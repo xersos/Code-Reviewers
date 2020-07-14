@@ -1,8 +1,8 @@
 {
   "realm": "Code-Reviewers",
   "auth-server-url": "http://localhost:9080/auth",
-  "resource": "back-end",
+  "resource": "ok",
   "credentials": {
-    "secret": "52b1a076-6b0b-42af-9ddc-09fa7dce2c03"
+    "secret": "84ba621d-2aba-4080-82d3-550e87236e26"
   }
 }
