@@ -3,6 +3,6 @@
   "auth-server-url": "http://localhost:9080/auth",
   "resource": "ok",
   "credentials": {
-    "secret": "84ba621d-2aba-4080-82d3-550e87236e26"
+    "secret": "4c3baaab-dce5-4ec4-b680-a680b4a37d68"
   }
 }
