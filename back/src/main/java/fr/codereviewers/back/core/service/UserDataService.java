@@ -1,4 +1,4 @@
-package fr.codereviewers.back.shared.service;
+package fr.codereviewers.back.core.service;
 
 import fr.codereviewers.back.core.dao.UserRepository;
 import fr.codereviewers.back.web.dto.UserDto;

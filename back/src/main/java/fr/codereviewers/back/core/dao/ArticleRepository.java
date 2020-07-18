@@ -10,5 +10,5 @@ import java.util.Optional;
 
 public interface ArticleRepository extends JpaRepository<ArticleEntity, Long> {
     Optional<List<ArticleEntity>> findAllByAuthorOrderByCreatedAt(UserEntity author);
-    Optional<List<ArticleEntity>> findAllByTitleOrCreatedAtAfterOrCreatedAtBeforeOrCreatedAtBeforeAndCreatedAtAfterOrAuthorContaining(String titleWildcard, Date createdAfter, Date createdBefore, Long authorId);
+    Optional<List<ArticleEntity>> findAllByTitleOrCreatedAtBeforeAndCreatedAtAfterOrAuthorContaining(String titleWildcard, Date createdAfter, Date createdBefore, Long authorId);
 }

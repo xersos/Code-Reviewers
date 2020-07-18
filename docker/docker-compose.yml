@@ -1,21 +1,51 @@
-version: '2'
+version: '3'
+
+volumes:
+  postgres_data:
+    driver: local
+  realm-config:
+    driver: local
+
 services:
-  codereviewersapplication-app:
-    image: codereviewersapplication
+  postgres:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     environment:
-      - _JAVA_OPTIONS=-Xmx512m -Xms256m
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://codereviewersapplication-postgresql:5432/codereviewers
-      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI=http://keycloak:9080/auth/realms/codereviewers
-      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID=web_app
-      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET=web_app
-      - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
     ports:
-      - 8080:8080
-  codereviewersapplication-postgresql:
-    extends:
-      file: postgresql.yml
-      service: codereviewersapplication-postgresql
+      - 5432:5432
   keycloak:
-    extends:
-      file: keycloak.yml
-      service: keycloak
+    image: quay.io/keycloak/keycloak:10.0.2
+    command:
+      [
+        '-b',
+        '0.0.0.0',
+        '-Dkeycloak.migration.action=import',
+        '-Dkeycloak.migration.provider=dir',
+        '-Dkeycloak.migration.dir=/opt/jboss/keycloak/realm-config',
+        '-Dkeycloak.migration.strategy=OVERWRITE_EXISTING',
+        '-Djboss.socket.binding.port-offset=1000',
+        '-Dkeycloak.profile.feature.upload_scripts=enabled',
+      ]
+    volumes:
+      - realm-config:/opt/jboss/keycloak/realm-config
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_PASSWORD: password
+      DB_SCHEMA: public
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
+      #JDBC_PARAMS: "ssl=true"
+    ports:
+      - 9080:9080
+      - 9443:9443
+      - 10990:10990
+    depends_on:
+      - postgres

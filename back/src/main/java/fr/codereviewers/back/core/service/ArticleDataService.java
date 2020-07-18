@@ -1,4 +1,4 @@
-package fr.codereviewers.back.shared.service;
+package fr.codereviewers.back.core.service;
 
 import fr.codereviewers.back.core.dao.ArticleRepository;
 import fr.codereviewers.back.shared.mapper.ArticleMapper;

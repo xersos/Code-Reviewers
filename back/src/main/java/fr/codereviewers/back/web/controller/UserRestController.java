@@ -2,7 +2,7 @@ package fr.codereviewers.back.web.controller;
 
 import fr.codereviewers.back.web.dto.UserDto;
 import fr.codereviewers.back.core.exception.UserNotFoundException;
-import fr.codereviewers.back.shared.service.UserDataService;
+import fr.codereviewers.back.core.service.UserDataService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

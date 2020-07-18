@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class KeycloakService {
 
     private static final Logger LOGGER = Logger.getLogger(KeycloakService.class);
-    private AuthzClient authzClient = AuthzClient.create();
+    private final AuthzClient authzClient = AuthzClient.create();
 
     public boolean authentication(String token) {
         AuthorizationRequest request = new AuthorizationRequest();
