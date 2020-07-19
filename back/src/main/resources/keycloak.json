@@ -1,5 +1,5 @@
 {
-  "realm": "CodeReviewers",
+  "realm": "Code-Reviewers",
   "auth-server-url": "http://localhost:9080/auth",
   "resource": "back-end",
   "credentials": {
